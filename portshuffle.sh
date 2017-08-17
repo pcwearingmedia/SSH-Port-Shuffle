@@ -3,7 +3,7 @@
 # Script name: portshuffle.sh
 #
 # Author: P-C Markovski.
-# Date (Git repo init): 2017-08-17).
+# Date (Git repo init): 2017-08-17.
 # Purpose: Generate new random port for the SSHD daemon, reconfigure daemon and restart it.
 
 
