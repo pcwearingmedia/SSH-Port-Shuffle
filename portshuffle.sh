@@ -14,7 +14,8 @@ MINPORT=15000
 		# Create a new random port, >15000.
 portshuffle()
 {
-	seed=$RANDOM
+	#seed=$RANDOM
+	seed=$(od -A n -N 2 -t u2 /dev/urandom | cut -d' ' -f2)
 
 	if [[ $seed -gt $MINPORT ]]
 	then
@@ -23,7 +24,8 @@ portshuffle()
 
 	if [[ $seed -lt $MINPORT ]]
 	then
-		echo $(($seed+15000))
+
+		echo $(($RANDOM+15000))
 	fi
 }
 
@@ -37,5 +39,5 @@ portchange()
 		# Run script.
 newport=$(portshuffle)		# Generate a new random port.
 echo $newport			# TEST: Print the port as calculated by portshuffle().
-portchange $newport		# Change the ssh port to newport in the ssh configuration file.
-/etc/init.d/ssh restart		# Restart the daemon identified by a parameter.
+#portchange $newport		# Change the ssh port to newport in the ssh configuration file.
+#/etc/init.d/ssh restart		# Restart the daemon identified by a parameter.
