@@ -6,6 +6,10 @@
 # Date (Git repo init): 2017-08-17.
 # Purpose: Generate new random port for the SSHD daemon, reconfigure daemon and restart it.
 
+# ToDo:
+#	- Check how uniform the random number distribution is (numbers.txt, >250000 numbers).
+#		- Graph using ChartJS.
+#	- Determine the absolute min and max valuees with this algorithm.
 
 
 		# Global variables.
