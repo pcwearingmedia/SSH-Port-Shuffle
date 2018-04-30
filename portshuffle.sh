@@ -7,9 +7,11 @@
 # Purpose: Generate new random port for the SSHD daemon, reconfigure daemon and restart it.
 
 # ToDo:
-#	- Check how uniform the random number distribution is (numbers.txt, >250000 numbers).
-#		- Graph using ChartJS.
-#	- Determine the absolute min and max valuees with this algorithm.
+#	- Check how uniform the random number distribution is for..
+#		- $RANDOM with <>15000 if-cases.
+#		- od..
+#		- RANDOM%65000..
+#	- Graph using ChartJS.
 
 
 		# Global variables.
