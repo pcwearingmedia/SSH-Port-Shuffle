@@ -21,7 +21,7 @@ portshuffle()
 	#seed=$RANDOM
 	#seed=$(od -A n -N 2 -t u2 /dev/urandom | cut -d' ' -f2)
 
-		echo $(( ($RANDOM%65000) +1 ))
+		echo $(( ( ($RANDOM*2) % 65000) +1 ))
 }
 
 		# Change the port in the specified daemon.
