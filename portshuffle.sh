@@ -19,18 +19,9 @@ MINPORT=15000
 portshuffle()
 {
 	#seed=$RANDOM
-	seed=$(od -A n -N 2 -t u2 /dev/urandom | cut -d' ' -f2)
+	#seed=$(od -A n -N 2 -t u2 /dev/urandom | cut -d' ' -f2)
 
-	if [[ $seed -gt $MINPORT ]]
-	then
-		echo $seed
-	fi
-
-	if [[ $seed -lt $MINPORT ]]
-	then
-
-		echo $(($RANDOM+15000))
-	fi
+		echo $(( ($RANDOM%65000) +1 ))
 }
 
 		# Change the port in the specified daemon.
