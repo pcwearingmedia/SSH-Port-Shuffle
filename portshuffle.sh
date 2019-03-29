@@ -8,9 +8,9 @@
 
 # ToDo:
 #	- Check how uniform the random number distribution is for..
-#		- $RANDOM with <>15000 if-cases.
-#		- od..
-#		- RANDOM%65000..
+#		- $RANDOM*2 with >15000. (15k-65k)
+#		- $RANDOM*2 (max 65k)
+#		- /dev/urandom
 #	- Graph using ChartJS.
 
 
@@ -20,10 +20,13 @@ MINPORT=15000
 		# Create a new random port, >15000.
 portshuffle()
 {
-	#seed=$RANDOM
-	#seed=$(od -A n -N 2 -t u2 /dev/urandom | cut -d' ' -f2)
+	seed=$RANDOM
 
-		echo $(( ( ($RANDOM*2) % 65000) +1 ))
+	while [ $seed -lt $1 -o $seed -gt $2 ]; do
+		seed=$RANDOM
+	done
+
+	echo $seed
 }
 
 		# Change the port in the specified daemon.
@@ -34,7 +37,7 @@ portchange()
 }
 
 		# Run script.
-newport=$(portshuffle)		# Generate a new random port.
-echo $newport			# TEST: Print the port as calculated by portshuffle().
+newport=$(portshuffle $1 $2)		# Generate a new random port.
+printf "Final: %s\n" $newport
 #portchange $newport		# Change the ssh port to newport in the ssh configuration file.
 #/etc/init.d/ssh restart		# Restart the daemon identified by a parameter.
