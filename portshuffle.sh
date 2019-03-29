@@ -17,13 +17,13 @@
 		# Global variables.
 MINPORT=15000
 
-		# Create a new random port, >15000.
+		# Create a new random port, in the interval specified by two parameters.
 portshuffle()
 {
-	seed=$RANDOM
+	seed=$(($RANDOM*2))
 
 	while [ $seed -lt $1 -o $seed -gt $2 ]; do
-		seed=$RANDOM
+		seed=$(($RANDOM*2))
 	done
 
 	echo $seed
